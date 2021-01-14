@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <!--3种触发查询的方式： 
+      点按钮可查询
+      按回车键且抬起按键后也可执行查询
+      一边输入一边查询！-->
+  <input v-model:value="keywords" @input="search" @keyup.13="search"/><button @click="search">百度一下</button>
+</div>
+<script>
+var vm=new Vue({
+  el:"#app",
+  data:{
+    keywords:""
+  },
+  methods:{
+    search(){
+      //只有用户输入的内容不是空字符串，且不是空格时才执行查找
+      if(this.keywords.trim()!==""){
+        console.log(`查询${this.keywords}相关的信息...`)
+      }
+    }
+  }
+})
+</script>
+</body>
+</html>
